@@ -1,96 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riva Store | Original Shop</title>
+<meta name="description" content="Riva Store 2.0 — responsive e-commerce portfolio project">
+<title>Riva Store 2.0</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#fbfaf7;color:#20262d}a{text-decoration:none;color:inherit}.wrap{width:min(1100px,92%);margin:auto}header{position:sticky;top:0;background:#fbfaf7ee;backdrop-filter:blur(10px);border-bottom:1px solid #e7e0d7;z-index:5}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:800;letter-spacing:4px}.logo span{color:#9b6b50}nav{display:flex;gap:25px;color:#555}button{cursor:pointer;font:inherit}.cartBtn,.filter,.btn{border:1px solid #ddd4ca;background:#fff;padding:11px 16px;border-radius:10px;font-weight:700}.count{background:#9b6b50;color:#fff;border-radius:50%;padding:3px 7px;font-size:12px}.hero{padding:65px 0}.heroGrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:3px;color:#9b6b50;font-size:12px;font-weight:bold;margin-bottom:12px}h1{font-size:clamp(43px,7vw,72px);line-height:1.02;margin-bottom:18px}.hero p{color:#68707a;font-size:17px;max-width:520px}.actions{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}.primary{background:#20262d;color:white;border-color:#20262d}.heroImg{height:500px;border-radius:25px;overflow:hidden}.heroImg img,.aboutImg img,.card img{width:100%;height:100%;object-fit:cover}section{padding:70px 0}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.head h2{font-size:36px}.head p{color:#68707a;max-width:480px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter.active{background:#20262d;color:white}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:white;border:1px solid #e7e0d7;border-radius:18px;overflow:hidden}.cardImg{height:285px;position:relative}.tag{position:absolute;top:12px;left:12px;background:white;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:bold}.body{padding:17px}.body small{color:#8a8f96}.body h3{margin:4px 0}.price{font-weight:bold;font-size:18px;margin:8px 0 13px}.add{width:100%;padding:11px;border:0;border-radius:9px;background:#20262d;color:white;font-weight:bold}.about{background:#efe7de}.aboutGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}.aboutImg{height:410px;border-radius:23px;overflow:hidden}.about h2{font-size:40px;line-height:1.1;margin-bottom:14px}.about p{color:#606870;margin-bottom:10px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.feature{background:#fff;padding:16px;border-radius:13px}.feature span{display:block;color:#777;font-size:12px;margin-top:4px}.contact{background:#20262d;color:#fff;border-radius:25px;padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.contact p{color:#c8cdd2}.form{display:grid;gap:10px}.form input,.form textarea{background:#2c353e;border:1px solid #48515b;color:white;padding:12px;border-radius:9px}.form textarea{min-height:110px}.cartPanel{position:fixed;right:-430px;top:0;width:min(430px,94vw);height:100%;background:white;z-index:10;padding:22px;box-shadow:-10px 0 35px #0002;transition:.3s;display:flex;flex-direction:column}.cartPanel.open{right:0}.cartHead{display:flex;justify-content:space-between;margin-bottom:15px}.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px}.items{overflow:auto;flex:1}.item{display:grid;grid-template-columns:60px 1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid #eee}.item img{width:60px;height:60px;border-radius:8px;object-fit:cover}.qty{display:flex;gap:7px;margin-top:5px}.qty button{border:1px solid #ddd;background:white;border-radius:5px;width:25px}.total{border-top:1px solid #ddd;padding-top:15px;font-size:19px;font-weight:bold;display:flex;justify-content:space-between}.order{margin-top:12px;width:100%;padding:13px;background:#25d366;color:white;border:0;border-radius:10px;font-weight:bold}.empty{text-align:center;color:#777;padding:50px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#20262d;color:white;padding:11px 18px;border-radius:30px;opacity:0;transition:.25s;z-index:20}.toast.show{opacity:1}
-.productModal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:30}
-.productModal.open{display:flex}
-.modalBox{width:min(850px,96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;display:grid;grid-template-columns:1fr 1fr;position:relative;box-shadow:0 20px 70px #0004}
-.modalImg{min-height:420px}
-.modalImg img{width:100%;height:100%;object-fit:cover}
-.modalInfo{padding:38px}
-.modalInfo small{color:#8a8f96}
-.modalInfo h2{font-size:34px;margin:8px 0}
-.modalInfo p{color:#68707a;line-height:1.7;margin:15px 0}
-.modalPrice{font-size:24px;font-weight:800;margin:18px 0}
-.modalClose{position:absolute;right:15px;top:15px;border:0;background:#fff;border-radius:50%;width:40px;height:40px;font-size:25px;box-shadow:0 3px 15px #0002;z-index:2}
-.cardImg{cursor:pointer}
-@media(max-width:700px){.modalBox{grid-template-columns:1fr}.modalImg{height:300px;min-height:0}.modalInfo{padding:25px}}@media(max-width:800px){nav{display:none}.heroGrid,.aboutGrid,.contact{grid-template-columns:1fr}.heroImg{height:380px}.products{grid-template-columns:repeat(2,1fr)}}@media(max-width:550px){.products,.features{grid-template-columns:1fr}.hero{padding:45px 0}.heroImg{height:330px}.head{display:block}.head p{margin-top:8px}}
+:root{--bg:#fbfaf7;--card:#fff;--text:#20262d;--muted:#68707a;--line:#e7e0d7;--accent:#9b6b50;--soft:#efe7de;--shadow:0 16px 45px #00000012}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+body.dark{--bg:#111417;--card:#191d21;--text:#f4f4f1;--muted:#b6bcc3;--line:#2d3339;--soft:#22282e;--shadow:0 16px 45px #00000045}
+button,input,select,textarea{font:inherit}
+button,a{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:25px;font-weight:900;letter-spacing:4px}.logo span{color:var(--accent)}
+nav{display:flex;gap:20px;color:var(--muted)}
+.controls{display:flex;gap:7px;align-items:center}
+.control,.cart-btn,.filter,.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 13px;border-radius:10px;font-weight:700}
+.cart-btn{background:var(--text);color:var(--bg)}
+.count{background:var(--accent);color:#fff;border-radius:50%;padding:2px 7px;font-size:12px}
+.hero{padding:72px 0}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-size:12px;font-weight:800;margin-bottom:12px}
+h1{font-size:clamp(44px,7vw,78px);line-height:1.02;margin-bottom:20px}
+.hero p,.section-head p{color:var(--muted);font-size:17px;max-width:600px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.hero-img{height:500px;border-radius:26px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+section{padding:70px 0}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:38px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.search{flex:1;min-width:210px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 25px #00000006}
+.card-img{height:290px;position:relative;cursor:pointer}.card-img img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:12px;left:12px;background:var(--card);padding:5px 9px;border-radius:20px;font-size:11px;font-weight:800}
+.body{padding:17px}.body small{color:var(--muted)}.body h3{margin:4px 0}.price{font-size:19px;font-weight:900;margin:8px 0 13px}
+.add{width:100%;padding:11px;border:0;border-radius:9px;background:var(--text);color:var(--bg);font-weight:800}
+.about{background:var(--soft)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-img{height:450px;border-radius:22px;overflow:hidden}.about-img img{width:100%;height:100%;object-fit:cover}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.feature{padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.feature span{display:block;color:var(--muted);font-size:13px}
+.form{display:grid;gap:12px;max-width:620px}.form input,.form textarea{padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text)}.form textarea{min-height:130px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+.overlay{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;z-index:100;padding:18px}.overlay.open{display:flex}
+.modal{position:relative;background:var(--card);color:var(--text);width:min(850px,100%);max-height:90vh;overflow:auto;border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.close{position:absolute;right:14px;top:12px;border:0;background:var(--soft);color:var(--text);width:38px;height:38px;border-radius:50%;font-size:24px}
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.detail-img{height:420px;border-radius:16px;overflow:hidden}.detail-img img{width:100%;height:100%;object-fit:cover}.detail-price{font-size:28px;font-weight:900;margin:12px 0}.detail-actions{display:flex;gap:10px;margin-top:20px}
+.cart-panel{position:fixed;right:0;top:0;height:100%;width:min(430px,100%);background:var(--card);z-index:120;transform:translateX(100%);transition:.3s;box-shadow:-15px 0 40px #0002;padding:22px;display:flex;flex-direction:column}.cart-panel.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px}.cart-items{flex:1;overflow:auto;padding:12px 0}.cart-item{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:10px}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{width:28px;height:28px;border:1px solid var(--line);background:var(--soft);color:var(--text);border-radius:7px}.total-row{display:flex;justify-content:space-between;font-size:20px;font-weight:900;padding:16px 0}.full{width:100%}
+.dashboard{background:var(--soft)}.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.stat{background:var(--card);padding:22px;border:1px solid var(--line);border-radius:16px}.stat b{font-size:30px;display:block}.admin-table{margin-top:20px;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:15px}.admin-table table{width:100%;border-collapse:collapse;min-width:650px}.admin-table th,.admin-table td{text-align:left;padding:13px;border-bottom:1px solid var(--line)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);opacity:0;background:var(--text);color:var(--bg);padding:11px 16px;border-radius:10px;z-index:200;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+[dir="rtl"] nav{direction:rtl}[dir="rtl"] .cart-panel{right:auto;left:0;transform:translateX(-100%)}[dir="rtl"] .cart-panel.open{transform:translateX(0)}
+@media(max-width:800px){nav{display:none}.hero-grid,.about-grid,.product-detail{grid-template-columns:1fr}.hero-img{height:380px}.products{grid-template-columns:repeat(2,1fr)}.dash-grid{grid-template-columns:1fr}.features{grid-template-columns:1fr}}
+@media(max-width:550px){.products{grid-template-columns:1fr}.hero{padding:45px 0}.hero-img{height:330px}.controls .control{padding:8px}.detail-img{height:300px}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="#home">RIVA<span>.</span></a><nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></nav><button class="cartBtn" onclick="toggleCart()">Cart <span class="count" id="count">0</span></button></div></header>
+<header>
+<div class="container nav">
+<a class="logo" href="#home">RIVA<span>.</span></a>
+<nav><a href="#home" data-i="home">Home</a><a href="#shop" data-i="shop">Shop</a><a href="#about" data-i="about">About</a><a href="#dashboard" data-i="dashboard">Dashboard</a><a href="#contact" data-i="contact">Contact</a></nav>
+<div class="controls">
+<button class="control" id="langBtn">العربية</button>
+<button class="control" id="themeBtn">🌙 Dark</button>
+<button class="cart-btn" id="cartBtn">Cart <span class="count" id="count">0</span></button>
+</div>
+</div>
+</header>
 
 <main>
-<section class="hero" id="home"><div class="wrap heroGrid"><div><div class="eyebrow">Riva Store · Original Project</div><h1>Simple pieces. Thoughtfully selected.</h1><p>A custom e-commerce concept created from scratch for Riva Store, with a clean shopping experience and a responsive design.</p><div class="actions"><a class="btn primary" href="#shop">Shop Collection</a><a class="btn" href="#about">Our Story</a></div></div><div class="heroImg"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=85" alt="Modern store"></div></div></section>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow" data-i="eyebrow">Riva Store · Version 2.0</div>
+<h1 data-i="heroTitle">Simple pieces. Thoughtfully selected.</h1>
+<p data-i="heroText">An original e-commerce project upgraded with search, filters, product details, cart, checkout flow, bilingual interface and dashboard.</p>
+<div class="actions"><a class="btn primary" href="#shop" data-i="shopNow">Shop Collection</a><a class="btn" href="#dashboard" data-i="viewDashboard">View Dashboard</a></div>
+</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=85" alt="Riva Store"></div>
+</div>
+</section>
 
-<section id="shop"><div class="wrap"><div class="head"><div><div class="eyebrow">The collection</div><h2>Shop Riva</h2></div><p>Sample products and prices created for this portfolio project.</p></div><div class="filters"><button class="filter active" onclick="filter('All',this)">All</button><button class="filter" onclick="filter('Fashion',this)">Fashion</button><button class="filter" onclick="filter('Bags',this)">Bags</button><button class="filter" onclick="filter('Accessories',this)">Accessories</button><button class="filter" onclick="filter('Home',this)">Home</button></div><div class="products" id="products"></div></div></section>
+<section id="shop">
+<div class="container">
+<div class="section-head"><div class="eyebrow" data-i="collection">The collection</div><h2 data-i="shopTitle">Shop Riva</h2><p data-i="shopText">Search, filter and open any product to see its details.</p></div>
+<div class="toolbar">
+<input class="search" id="search" data-i-placeholder="search" placeholder="Search products...">
+<select class="search" id="sort"><option value="default">Sort</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
+</div>
+<div class="toolbar" id="filters"></div>
+<div class="products" id="products"></div>
+</div>
+</section>
 
-<section class="about" id="about"><div class="wrap aboutGrid"><div class="aboutImg"><img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85" alt="Fashion collection"></div><div><div class="eyebrow">About Riva</div><h2>A store concept built from the ground up.</h2><p>Riva Store is an original web-development project. The brand name, layout, interface, product names and shopping flow were created specifically for this project.</p><p>It is designed as a portfolio project to demonstrate responsive front-end development and JavaScript interaction.</p><div class="features"><div class="feature"><b>Original UI</b><span>Custom visual direction.</span></div><div class="feature"><b>Responsive</b><span>Phone and desktop ready.</span></div><div class="feature"><b>Shopping Cart</b><span>Add and change quantities.</span></div></div></div></div></section>
+<section class="about" id="about">
+<div class="container about-grid">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85" alt="Fashion collection"></div>
+<div><div class="eyebrow" data-i="aboutEyebrow">About Riva</div><h2 data-i="aboutTitle">A store concept built from the ground up.</h2><p data-i="aboutText">Riva Store is an original web-development project created specifically for this portfolio. The interface, product data and shopping experience were designed from scratch.</p><div class="features"><div class="feature"><b>JavaScript</b><span data-i="f1">Search, filters, cart and interactions.</span></div><div class="feature"><b>Responsive</b><span data-i="f2">Phone, tablet and desktop ready.</span></div><div class="feature"><b>UI Modes</b><span data-i="f3">Arabic/English and Light/Dark.</span></div></div></div>
+</div>
+</section>
 
-<section id="contact"><div class="wrap"><div class="contact"><div><div class="eyebrow" style="color:#d7b39c">Contact Riva</div><h2>Have a question?</h2><p>Send a message and the site will prepare a WhatsApp inquiry.</p></div><form class="form" onsubmit="send(event)"><input id="name" placeholder="Your name" required><input id="phone" placeholder="Phone number"><textarea id="msg" placeholder="Your message" required></textarea><button class="btn" type="submit">Send via WhatsApp</button></form></div></div></section>
+<section class="dashboard" id="dashboard">
+<div class="container">
+<div class="section-head"><div class="eyebrow" data-i="dashEyebrow">Admin demo</div><h2 data-i="dashTitle">Store Dashboard</h2><p data-i="dashText">A front-end dashboard demonstrating how a real store could manage products and orders. It is currently demo data; a backend/database can be connected later.</p></div>
+<div class="dash-grid"><div class="stat"><span data-i="productsStat">Products</span><b id="statProducts">0</b></div><div class="stat"><span data-i="cartStat">Cart Items</span><b id="statCart">0</b></div><div class="stat"><span data-i="valueStat">Cart Value</span><b id="statValue">EGP 0</b></div></div>
+<div class="admin-table"><table><thead><tr><th data-i="productCol">Product</th><th data-i="categoryCol">Category</th><th data-i="priceCol">Price</th><th data-i="statusCol">Status</th></tr></thead><tbody id="adminRows"></tbody></table></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="section-head"><div class="eyebrow" data-i="contactEyebrow">Contact Riva</div><h2 data-i="contactTitle">Have a question?</h2><p data-i="contactText">Send a message and the site will prepare a WhatsApp inquiry.</p></div>
+<form class="form" id="contactForm"><input id="name" required data-i-placeholder="name" placeholder="Your name"><input id="phone" data-i-placeholder="phone" placeholder="Phone number"><textarea id="message" required data-i-placeholder="message" placeholder="Your message"></textarea><button class="btn primary" data-i="send">Send via WhatsApp</button></form>
+</div>
+</section>
 </main>
+<footer><div class="container">© 2026 Riva Store · Original web development project by Rana Sayed.</div></footer>
 
-<footer><div class="wrap" style="padding:28px 0;color:#777">© 2026 Riva Store · Original web development project by Rana Sayed.</div></footer>
-
-
-<div class="productModal" id="productModal" onclick="closeProduct(event)">
-  <div class="modalBox">
-    <button class="modalClose" onclick="closeProduct()">×</button>
-    <div class="modalImg"><img id="modalImg" src="" alt=""></div>
-    <div class="modalInfo">
-      <small id="modalCat"></small>
-      <h2 id="modalName"></h2>
-      <div class="modalPrice" id="modalPrice"></div>
-      <p id="modalDesc"></p>
-      <button class="add" id="modalAdd">Add to Cart</button>
-    </div>
-  </div>
+<div class="overlay" id="productOverlay">
+<div class="modal product-detail"><button class="close" data-close="productOverlay">×</button><div class="detail-img"><img id="detailImg" src="" alt=""></div><div><div class="eyebrow" id="detailCat"></div><h2 id="detailName"></h2><div class="detail-price" id="detailPrice"></div><p id="detailDesc"></p><div class="detail-actions"><button class="btn primary" id="detailAdd">Add to Cart</button><button class="btn" data-close="productOverlay">Close</button></div></div></div>
 </div>
 
-<aside class="cartPanel" id="cart"><div class="cartHead"><h2>Your Cart</h2><button class="close" onclick="toggleCart()">×</button></div><div class="items" id="items"></div><div class="total"><span>Total</span><span id="total">EGP 0</span></div><button class="order" onclick="order()">Order via WhatsApp</button></aside><div class="toast" id="toast"></div>
+<aside class="cart-panel" id="cartPanel">
+<div class="cart-head"><h2 data-i="cartTitle">Your Cart</h2><button class="close" id="closeCart">×</button></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="total-row"><span data-i="total">Total</span><span id="total">EGP 0</span></div>
+<button class="btn primary full" id="checkout" data-i="checkout">Checkout via WhatsApp</button>
+</aside>
+<div class="toast" id="toast"></div>
 
 <script>
 const products=[
 {id:1,name:"Riva Linen Shirt",cat:"Fashion",price:850,desc:"A lightweight linen shirt with a relaxed everyday fit, designed for easy styling.",img:"https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=800&q=85"},
 {id:2,name:"Classic Everyday Tote",cat:"Bags",price:1200,desc:"A practical everyday tote with a clean shape and enough room for daily essentials.",img:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=800&q=85"},
-{id:3,name:"Minimal Watch",cat:"Accessories",price:1450,desc:"A minimal everyday watch with a timeless look that works with casual and smart outfits.",img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=85"},
-{id:4,name:"Soft Knit Set",cat:"Fashion",price:1650,desc:"A soft knit set created for a comfortable, coordinated everyday look.",img:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"},
-{id:5,name:"Everyday Crossbody",cat:"Bags",price:980,desc:"A compact crossbody bag for everyday use, combining a simple shape with easy styling.",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85"},
-{id:6,name:"Ceramic Home Set",cat:"Home",price:720,desc:"A simple ceramic set designed to add a clean, modern touch to your home.",img:"https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=85"}];
-let cart=[];
-function render(list=products){document.getElementById("products").innerHTML=list.map(p=>`<article class="card"><div class="cardImg" onclick="showProduct(${p.id})"><img src="${p.img}" alt="${p.name}">${p.id===1?'<span class="tag">Featured</span>':''}</div><div class="body"><small>${p.cat}</small><h3>${p.name}</h3><div class="price">EGP ${p.price.toLocaleString()}</div><button class="add" onclick="add(${p.id})">Add to Cart</button></div></article>`).join("")}
-function filter(cat,b){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(cat==="All"?products:products.filter(x=>x.cat===cat))}
-function add(id){let x=cart.find(x=>x.id===id);x?x.qty++:cart.push({...products.find(x=>x.id===id),qty:1});draw();toast("Added to cart")}
-function change(id,d){let x=cart.find(x=>x.id===id);x.qty+=d;if(x.qty<=0)cart=cart.filter(x=>x.id!==id);draw()}
-function draw(){document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("items").innerHTML=cart.length?cart.map(x=>`<div class="item"><img src="${x.img}"><div><b>${x.name}</b><br><small>EGP ${x.price}</small><div class="qty"><button onclick="change(${x.id},-1)">−</button>${x.qty}<button onclick="change(${x.id},1)">+</button></div></div><b>EGP ${x.price*x.qty}</b></div>`).join(""):'<div class="empty">Your cart is empty.</div>';document.getElementById("total").textContent="EGP "+cart.reduce((a,x)=>a+x.price*x.qty,0).toLocaleString()}
+{id:3,name:"Minimal Watch",cat:"Accessories",price:1450,desc:"A minimal everyday watch with a timeless look for casual and smart outfits.",img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=85"},
+{id:4,name:"Soft Knit Set",cat:"Fashion",price:980,desc:"A comfortable knit set with a simple silhouette for everyday wear.",img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85"},
+{id:5,name:"Everyday Crossbody",cat:"Bags",price:990,desc:"A compact crossbody bag designed for practical everyday use.",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85"},
+{id:6,name:"Ceramic Home Set",cat:"Home",price:720,desc:"A simple ceramic set designed to add a clean modern touch to your home.",img:"https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=85"}
+];
+let cart=JSON.parse(localStorage.getItem("rivaCart")||"[]");
+let lang=localStorage.getItem("rivaLang")||"en";
+let dark=localStorage.getItem("rivaDark")==="1";
+let category="All";
 
-function showProduct(id){
-  const p=products.find(x=>x.id===id);
-  if(!p)return;
-  document.getElementById("modalImg").src=p.img;
-  document.getElementById("modalImg").alt=p.name;
-  document.getElementById("modalCat").textContent=p.cat;
-  document.getElementById("modalName").textContent=p.name;
-  document.getElementById("modalPrice").textContent="EGP "+p.price.toLocaleString();
-  document.getElementById("modalDesc").textContent=p.desc;
-  document.getElementById("modalAdd").onclick=()=>{add(p.id);closeProduct();};
-  document.getElementById("productModal").classList.add("open");
-}
-function closeProduct(e){
-  if(e && e.target.id!=="productModal")return;
-  document.getElementById("productModal").classList.remove("open");
-}
+const translations={
+en:{home:"Home",shop:"Shop",about:"About",dashboard:"Dashboard",contact:"Contact",eyebrow:"Riva Store · Version 2.0",heroTitle:"Simple pieces. Thoughtfully selected.",heroText:"An original e-commerce project upgraded with search, filters, product details, cart, checkout flow, bilingual interface and dashboard.",shopNow:"Shop Collection",viewDashboard:"View Dashboard",collection:"The collection",shopTitle:"Shop Riva",shopText:"Search, filter and open any product to see its details.",aboutEyebrow:"About Riva",aboutTitle:"A store concept built from the ground up.",aboutText:"Riva Store is an original web-development project created specifically for this portfolio. The interface, product data and shopping experience were designed from scratch.",f1:"Search, filters, cart and interactions.",f2:"Phone, tablet and desktop ready.",f3:"Arabic/English and Light/Dark.",dashEyebrow:"Admin demo",dashTitle:"Store Dashboard",dashText:"A front-end dashboard demonstrating how a real store could manage products and orders. It is currently demo data; a backend/database can be connected later.",productsStat:"Products",cartStat:"Cart Items",valueStat:"Cart Value",productCol:"Product",categoryCol:"Category",priceCol:"Price",statusCol:"Status",contactEyebrow:"Contact Riva",contactTitle:"Have a question?",contactText:"Send a message and the site will prepare a WhatsApp inquiry.",send:"Send via WhatsApp",cartTitle:"Your Cart",total:"Total",checkout:"Checkout via WhatsApp",search:"Search products...",name:"Your name",phone:"Phone number",message:"Your message",add:"Add to Cart",empty:"Your cart is empty.",added:"Added to cart",status:"Available",close:"Close"},
+ar:{home:"الرئيسية",shop:"المتجر",about:"عن Riva",dashboard:"لوحة التحكم",contact:"تواصل",eyebrow:"Riva Store · الإصدار 2.0",heroTitle:"اختيارات بسيطة بتصميم مدروس.",heroText:"مشروع متجر إلكتروني أصلي تم تطويره بإضافة البحث والفلترة وتفاصيل المنتجات والسلة والطلب واللغتين ولوحة التحكم.",shopNow:"تسوق الآن",viewDashboard:"لوحة التحكم",collection:"المجموعة",shopTitle:"متجر Riva",shopText:"ابحثي وفلترِي المنتجات واضغطي على أي منتج لرؤية تفاصيله.",aboutEyebrow:"عن Riva",aboutTitle:"متجر تم بناؤه من الصفر.",aboutText:"Riva Store مشروع تطوير ويب أصلي تم تصميم واجهته وبيانات منتجاته وتجربة التسوق الخاصة به من البداية.",f1:"بحث وفلترة وسلة وتفاعلات.",f2:"متوافق مع الهاتف والتابلت والكمبيوتر.",f3:"العربية والإنجليزية + فاتح وداكن.",dashEyebrow:"تجربة لوحة الإدارة",dashTitle:"لوحة تحكم المتجر",dashText:"لوحة أمامية توضح كيف يمكن إدارة المنتجات والطلبات. البيانات الحالية تجريبية ويمكن ربطها لاحقًا بقاعدة بيانات وBackend.",productsStat:"المنتجات",cartStat:"عناصر السلة",valueStat:"قيمة السلة",productCol:"المنتج",categoryCol:"التصنيف",priceCol:"السعر",statusCol:"الحالة",contactEyebrow:"تواصل مع Riva",contactTitle:"عندك سؤال؟",contactText:"اكتبي رسالتك وسيتم تجهيزها للإرسال عبر واتساب.",send:"إرسال عبر واتساب",cartTitle:"سلة المشتريات",total:"الإجمالي",checkout:"إتمام الطلب عبر واتساب",search:"ابحثي عن منتج...",name:"الاسم",phone:"رقم الهاتف",message:"الرسالة",add:"أضف للسلة",empty:"السلة فارغة.",added:"تمت الإضافة للسلة",status:"متاح",close:"إغلاق"}};
 
-function toggleCart(){document.getElementById("cart").classList.toggle("open")}
-function order(){if(!cart.length){toast("Your cart is empty");return}let lines=cart.map(x=>`${x.name} x${x.qty} = EGP ${x.price*x.qty}`).join("\n");let total=cart.reduce((a,x)=>a+x.price*x.qty,0);openWA(`Hello Riva Store,\n\nI would like to order:\n${lines}\n\nTotal: EGP ${total}`)}
-function send(e){e.preventDefault();openWA(`Hello Riva Store,\n\nName: ${name.value}\nPhone: ${phone.value}\nMessage: ${msg.value}`)}
-function openWA(text){window.open("https://wa.me/201024546840?text="+encodeURIComponent(text),"_blank")}
-function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1600)}
-render();draw();
+function t(k){return translations[lang][k]||k}
+function save(){localStorage.setItem("rivaCart",JSON.stringify(cart));localStorage.setItem("rivaLang",lang);localStorage.setItem("rivaDark",dark?"1":"0")}
+function renderText(){
+document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";document.querySelectorAll("[data-i]").forEach(el=>el.textContent=t(el.dataset.i));document.querySelectorAll("[data-i-placeholder]").forEach(el=>el.placeholder=t(el.dataset.iPlaceholder));document.getElementById("langBtn").textContent=lang==="en"?"العربية":"English";document.getElementById("themeBtn").textContent=dark?"☀️ Light":"🌙 Dark";
+renderProducts();renderCart();renderDashboard();
+}
+function renderFilters(){
+const cats=["All","Fashion","Bags","Accessories","Home"];document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${category===c?"primary":""}" data-cat="${c}">${lang==="ar"&&c==="All"?"الكل":c}</button>`).join("");
+document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{category=b.dataset.cat;renderProducts();renderFilters()});
+}
+function renderProducts(){
+renderFilters();const q=document.getElementById("search").value.toLowerCase().trim();let list=products.filter(p=>(category==="All"||p.cat===category)&&(`${p.name} ${p.cat}`.toLowerCase().includes(q)));const sort=document.getElementById("sort").value;if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);
+document.getElementById("products").innerHTML=list.map(p=>`<article class="card"><div class="card-img" data-id="${p.id}"><img src="${p.img}" alt="${p.name}">${p.id===1?`<span class="tag">${lang==="ar"?"مميز":"Featured"}</span>`:""}</div><div class="body"><small>${p.cat}</small><h3>${p.name}</h3><div class="price">EGP ${p.price.toLocaleString()}</div><button class="add" data-add="${p.id}">${t("add")}</button></div></article>`).join("")||`<p>${lang==="ar"?"لا توجد منتجات مطابقة.":"No matching products."}</p>`;
+document.querySelectorAll("[data-id]").forEach(x=>x.onclick=()=>openProduct(+x.dataset.id));document.querySelectorAll("[data-add]").forEach(x=>x.onclick=()=>add(+x.dataset.add));
+}
+function openProduct(id){const p=products.find(x=>x.id===id);if(!p)return;detailImg.src=p.img;detailImg.alt=p.name;detailCat.textContent=p.cat;detailName.textContent=p.name;detailPrice.textContent="EGP "+p.price.toLocaleString();detailDesc.textContent=p.desc;detailAdd.textContent=t("add");detailAdd.onclick=()=>{add(p.id);productOverlay.classList.remove("open")};productOverlay.classList.add("open")}
+function add(id){const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id,qty:1});save();renderCart();renderDashboard();toast(t("added"))}
+function change(id,d){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);save();renderCart();renderDashboard()}
+function renderCart(){const count=cart.reduce((s,x)=>s+x.qty,0),value=cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id)?.price||0)*x.qty,0);document.getElementById("count").textContent=count;document.getElementById("total").textContent="EGP "+value.toLocaleString();document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(p=>p.id===x.id);return `<div class="cart-item"><img src="${p.img}" alt="${p.name}"><div><b>${p.name}</b><small>EGP ${p.price.toLocaleString()}</small><div class="qty"><button data-change="${p.id},-1">−</button>${x.qty}<button data-change="${p.id},1">+</button></div></div><b>EGP ${(p.price*x.qty).toLocaleString()}</b></div>`}).join(""):`<p>${t("empty")}</p>`;document.querySelectorAll("[data-change]").forEach(b=>{const [id,d]=b.dataset.change.split(",").map(Number);b.onclick=()=>change(id,d)})}
+function renderDashboard(){statProducts.textContent=products.length;statCart.textContent=cart.reduce((s,x)=>s+x.qty,0);const value=cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id)?.price||0)*x.qty,0);statValue.textContent="EGP "+value.toLocaleString();adminRows.innerHTML=products.map(p=>`<tr><td>${p.name}</td><td>${p.cat}</td><td>EGP ${p.price.toLocaleString()}</td><td>${t("status")}</td></tr>`).join("")}
+function toast(msg){const x=document.getElementById("toast");x.textContent=msg;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1500)}
+function whatsapp(text){window.open("https://wa.me/201024546840?text="+encodeURIComponent(text),"_blank")}
+langBtn.onclick=()=>{lang=lang==="en"?"ar":"en";save();renderText()}
+themeBtn.onclick=()=>{dark=!dark;document.body.classList.toggle("dark",dark);save();renderText()}
+cartBtn.onclick=()=>cartPanel.classList.add("open");closeCart.onclick=()=>cartPanel.classList.remove("open")
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).classList.remove("open"))
+productOverlay.onclick=e=>{if(e.target===productOverlay)productOverlay.classList.remove("open")}
+search.oninput=renderProducts;sort.onchange=renderProducts
+checkout.onclick=()=>{if(!cart.length){toast(t("empty"));return}const lines=cart.map(x=>{const p=products.find(p=>p.id===x.id);return `${p.name} x${x.qty} = EGP ${p.price*x.qty}`}).join("\n");const total=cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id).price*x.qty),0);whatsapp(`${lang==="ar"?"مرحبًا Riva Store، أريد طلب:":"Hello Riva Store, I would like to order:"}\n\n${lines}\n\n${t("total")}: EGP ${total}`)}
+contactForm.onsubmit=e=>{e.preventDefault();whatsapp(`${lang==="ar"?"رسالة من موقع Riva Store":"Message from Riva Store"}\n\n${t("name")}: ${name.value}\n${t("phone")}: ${phone.value}\n${t("message")}: ${message.value}`)}
+document.body.classList.toggle("dark",dark);renderText();
 </script>
 </body>
 </html>
